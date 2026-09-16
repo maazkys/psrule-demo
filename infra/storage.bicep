@@ -10,12 +10,12 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   kind: 'StorageV2'
   properties: {
     publicNetworkAccess: 'Disabled'
-    minimumTlsVersion: 'TLS1_0'
+    minimumTlsVersion: 'TLS1_2'
     supportsHttpsTrafficOnly: true
     allowBlobPublicAccess: false
     allowSharedKeyAccess: false
     networkAcls: {
-      defaultAction: 'Allow'
+      defaultAction: 'Deny'
     }
   }
   tags: {

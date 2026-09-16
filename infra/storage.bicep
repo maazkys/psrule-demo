@@ -9,9 +9,16 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   }
   kind: 'StorageV2'
   properties: {
-    // Intentionally weak settings for Phase 2 to catch:
-    publicNetworkAccess: 'Enabled'
-    minimumTlsVersion: 'TLS1_0'
-    supportsHttpsTrafficOnly: false
+    publicNetworkAccess: 'Disabled'
+    minimumTlsVersion: 'TLS1_2'
+    supportsHttpsTrafficOnly: true
+    allowBlobPublicAccess: false
+    allowSharedKeyAccess: false
+    networkAcls: {
+      defaultAction: 'Deny'
+    }
+  }
+  tags: {
+    CostCenter: 'IT-001'
   }
 }

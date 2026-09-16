@@ -1,0 +1,12 @@
+---
+# Synopsis: All resources must have a CostCenter tag.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: 'Local.Resource.CostCenterTag'
+  tags:
+    severity: Important
+spec:
+  condition:
+    field: 'tags.CostCenter'
+    exists: true

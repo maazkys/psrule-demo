@@ -1,0 +1,25 @@
+# Require a minimum version of PSRule for Azure
+requires:
+  PSRule.Rules.Azure: '>=1.30.0'
+
+# Automatically include the Azure module's rules
+include:
+  module:
+    - PSRule.Rules.Azure
+
+# Enable Bicep expansion so .bicep files are compiled into checkable
+# Azure resource objects. This is required -- it is not on by default.
+configuration:
+  AZURE_BICEP_FILE_EXPANSION: true
+  AZURE_BICEP_CHECK_TOOL: true
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 30
+
+# Only scan the infra folder; ignore everything else by default
+input:
+  pathIgnore:
+    - '**'
+    - '!infra/**/*.bicep'
+
+# Only show meaningful outcomes
+output:
+  outcome: Problem
